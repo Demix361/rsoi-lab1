@@ -1,0 +1,19 @@
+version: "3"
+services:
+  django:
+    build: .
+    command: bash -c "python ./src/mysite/manage.py makemigrations && python ./src/mysite/manage.py migrate && python ./src/mysite/manage.py runserver 0.0.0.0:8080"
+    volumes:
+      - .:/src/mysite
+    ports:
+      - "8080:8080"
+  #test:
+  #  build: .
+  #  command: bash -c "python ./src/mysite/manage.py makemigrations && python ./src/mysite/manage.py migrate && python ./src/mysite/manage.py test --keepdb main"
+  #  volumes:
+  #    - .:/src/mysite
+  #  ports:
+  #    - "8000:8000"
+
+volumes:
+  db-data:
